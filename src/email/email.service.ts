@@ -15,7 +15,7 @@ export class EmailService {
     @Inject(CONFIG_OPTIONS) private readonly options: EmailModuleOptions,
   ) {}
 
-  //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
+  
 
   // private async sendEmail(subject: string, emailTo: string, template: string, emailVars: IEmailVars[]) {
   private async sendEmail(emailTo: string, code: string) {
