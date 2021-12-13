@@ -55,6 +55,9 @@ import { UploadsModule } from './uploads/uploads.module';
         process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
       synchronize: process.env.NODE_ENV !== 'prod',
       entities: [User, Verification, Restaurant, Category, Dish, Order, OrderItem, Payment],
+      ssl: {
+        rejectUnauthorized: false
+      }
     }),
     GraphQLModule.forRoot({
       installSubscriptionHandlers: true,
