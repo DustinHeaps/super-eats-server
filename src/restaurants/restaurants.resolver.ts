@@ -34,8 +34,8 @@ import { RestaurantsInput, RestaurantsResponse } from './inputs/restaurantsInput
 import { RestaurantInput, RestaurantResponse } from './inputs/restaurantInput';
 import { SearchRestaurantInput, SearchRestaurantResponse } from './inputs/searchRestaurantsInput';
 import { Dish } from './entities/dish.entity';
-import { CreateDishInput, CreateDishResponse } from './inputs/createDishINput';
-import { EditDishInput, EditDishResponse } from './inputs/editdishInput';
+import { CreateDishInput, CreateDishResponse } from './inputs/createDishInput';
+import { EditDishInput, EditDishResponse } from './inputs/editDishInput';
 import { DeleteDishInput, DeleteDishResponse } from './inputs/deleteDishInput';
 import { MyRestaurantResponse, MyRestaurantInput } from './inputs/myRestaurant.input';
 import { MyRestaurantsResponse } from './inputs/myRestaurants.input';

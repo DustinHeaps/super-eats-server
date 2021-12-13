@@ -10,7 +10,7 @@ import { Dish } from './entities/dish.entity';
 import { Restaurant } from './entities/restaurant.entity';
 import { CategoriesResponse } from './inputs/categoriesInput';
 import { CategoryInput, CategoryResponse } from './inputs/categoryInput';
-import { CreateDishInput, CreateDishResponse } from './inputs/createDishINput';
+import { CreateDishInput, CreateDishResponse } from './inputs/createDishInput';
 import {
   CreateRestaurantResponse,
   CreateRestaurantInput,
@@ -20,7 +20,7 @@ import {
   DeleteRestaurantInput,
   DeleteRestaurantResponse,
 } from './inputs/deleteRestaurantInput';
-import { EditDishInput, EditDishResponse } from './inputs/editdishInput';
+import { EditDishInput, EditDishResponse } from './inputs/editDishInput';
 import {
   MyRestaurantInput,
   MyRestaurantResponse,
