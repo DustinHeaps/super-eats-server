@@ -36,28 +36,42 @@ import { UploadsModule } from './uploads/uploads.module';
       ignoreEnvFile: process.env.NODE_ENV === 'prod',
       validationSchema: Joi.object({
         NODE_ENV: Joi.string().valid('dev', 'prod', 'test').required(),
-        DB_HOST: Joi.string().required(),
-        DB_PORT: Joi.string().required(),
-        DB_USER: Joi.string().required(),
-        DB_PASSWORD: Joi.string().required(),
-        DB_NAME: Joi.string().required(),
+        DB_HOST: Joi.string(),
+        DB_PORT: Joi.string(),
+        DB_USER: Joi.string(),
+        DB_PASSWORD: Joi.string(),
+        DB_NAME: Joi.string(),
         JWT_SECRET: Joi.string().required(),
       }),
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.DB_HOST,
-      port: +process.env.DB_PORT,
-      username: process.env.DB_USER,
-      password: process.env.DB_PASSWORD,
-      database: process.env.DB_NAME,
+      ...(process.env.DATABASE_URL
+        ? { url: process.env.DATABASE_URL }
+        : {
+            host: process.env.DB_HOST,
+            port: +process.env.DB_PORT,
+            username: process.env.DB_USER,
+            password: process.env.DB_PASSWORD,
+            database: process.env.DB_NAME,
+          }),
+
       logging:
         process.env.NODE_ENV !== 'prod' && process.env.NODE_ENV !== 'test',
       synchronize: process.env.NODE_ENV !== 'prod',
-      entities: [User, Verification, Restaurant, Category, Dish, Order, OrderItem, Payment],
+      entities: [
+        User,
+        Verification,
+        Restaurant,
+        Category,
+        Dish,
+        Order,
+        OrderItem,
+        Payment,
+      ],
       ssl: {
-        rejectUnauthorized: false
-      }
+        rejectUnauthorized: false,
+      },
     }),
     GraphQLModule.forRoot({
       installSubscriptionHandlers: true,
@@ -67,12 +81,11 @@ import { UploadsModule } from './uploads/uploads.module';
       // },
 
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
-      context:  async ({ req, connection }) => {
+      context: async ({ req, connection }) => {
         if (req) {
-          return { headers: req.headers }
+          return { headers: req.headers };
         } else {
-          return {headers: connection.context}
-
+          return { headers: connection.context };
         }
       },
     }),
