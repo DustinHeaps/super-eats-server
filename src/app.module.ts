@@ -76,10 +76,6 @@ import { UploadsModule } from './uploads/uploads.module';
     }),
     GraphQLModule.forRoot({
       installSubscriptionHandlers: true,
-      // cors: {
-      //   origin: 'http://localhost:5000/graphql',
-      //   credentials: true,
-      // },
 
       autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
       context: async ({ req, connection }) => {
