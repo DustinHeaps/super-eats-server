@@ -46,6 +46,7 @@ import { UploadsModule } from './uploads/uploads.module';
     }),
     TypeOrmModule.forRoot({
       type: 'postgres',
+      // url: process.env.DATABASE_URL,
       ...(process.env.DATABASE_URL
         ? { url: process.env.DATABASE_URL }
         : {

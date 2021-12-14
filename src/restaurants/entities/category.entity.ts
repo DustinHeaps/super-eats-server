@@ -14,7 +14,7 @@ export class Category extends SharedEntity {
   @Length(5)
   name: string;
 
-  @Field(type => String)
+  @Field(type => String, {nullable: true})
   @Column({nullable: true})
   @IsString()
   image?: string

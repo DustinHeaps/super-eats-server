@@ -75,7 +75,7 @@ type Category {
   createdAt: DateTime!
   updatedAt: DateTime!
   name: String!
-  image: String!
+  image: String
   slug: String!
   restaurants: [Restaurant!]!
   restaurantCount: Int!
