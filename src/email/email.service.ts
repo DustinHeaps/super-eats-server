@@ -19,13 +19,13 @@ export class EmailService {
 
   // private async sendEmail(subject: string, emailTo: string, template: string, emailVars: IEmailVars[]) {
   private async sendEmail(emailTo: string, code: string) {
-    const url = `http://localhost:3000/confirm?code=${code}`;
+    const url = `https://super-eats.netlify.app/confirm?code=${code}`;
 
     let transporter = nodemailer.createTransport({
       service: 'gmail',
       auth: {
-        user: 'dustinheaps89@gmail.com', // generated ethereal user
-        pass: 'shakey89', // generated ethereal password
+        user: process.env.EMAIL_USER, // generated ethereal user
+        pass:process.env.EMAIL_PASSWORD, // generated ethereal password
       },
     });
 
